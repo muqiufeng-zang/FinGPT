@@ -2,6 +2,8 @@
 
 **FinGPT v3 series are LLMs finetuned with LoRA method on the News and Tweets sentiment analysis dataset which achieve best scores on most of the financial sentiment analysis datasets.**
 
+### You can reproduce the results of our experiment by running [benchmarks](./benchmark/benchmarks.ipynb), the detailed tutorial is on the way.
+
 ## Ⅰ. Try our model ( [FinGPT v3](https://huggingface.co/oliverwang15/FinGPT_ChatGLM2_Sentiment_Instruction_LoRA_FT) )
 
 ``` python
@@ -47,28 +49,28 @@ for sentiment in out_text:
 
 ## Ⅱ. Benchmark Results
 
-| **Weighted F1** | BloombergGPT | [ChatGLM2](https://github.com/THUDM/ChatGLM2-6B) | [v3](https://huggingface.co/oliverwang15/FinGPT_ChatGLM2_Sentiment_Instruction_LoRA_FT) | v3.1      | v3.1.1 (8bit) | v3.1.2 (QLoRA) | [Llama2](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) | v3.2 |
-| --------------- | :----------: | :----------------------------------------------: | :----------------------------------------------------------: | :--------------: | :----------------: | :------------------------: | :------------------------: | :------------------------: |
-| FPB [1] | 0.511 | 0.381 | 0.701 | <ins>**0.855**</ins> | <ins>**0.855**</ins> | 0.777 | 0.390 | *0.850* |
-| FiQA-SA [2] | 0.751 | 0.790 | 0.760 | <ins>0.850</ins> | *0.847* | 0.752 | 0.800 | **0.860** |
-| TFNS [3] | - | 0.189 | 0.740 | *0.875* | <ins>0.879</ins> | 0.828 | 0.296 | **0.894** |
-| NWGI [4] | - | 0.449 | 0.578 | **0.642** | <ins>0.636</ins> | 0.583 | 0.503 | *0.632* |
-| Mean |  | 0.452 | 0.730 | <ins>0.805</ins> | *0.804* | 0.735 | 0.497 | **0.809** |
-| Std |  | 0.217 | **0.091** | *0.095* | 0.098 | <ins>0.092</ins> | 0.189 | 0.103 |
-| **ACC/F1 Micro** |  |  |  |  |  |  |  |  |
-| FPB [1]         | -            | 0.464                                            | 0.775                                                        | <ins>**0.856**</ins> | <ins>**0.856**</ins> |      0.797       |                            0.462                             |     *0.851*      |
-| FiQA-SA [2]     | -            | 0.822                                            | 0.731                                                        | <ins>*0.836*</ins> |  <ins>*0.836*</ins>  |      0.713       |                            0.822                             |    **0.844**     |
-| TFNS [3]        | -            | 0.331                                            | 0.738                                                        | *0.876* | <ins>0.879</ins> |      0.837       |                            0.386                             |    **0.894**     |
-| NWGI [4]        | -            | 0.560                                            | 0.588                                                        |      **0.642**       | <ins>0.638</ins> | 0.587 | 0.583 | *0.636* |
-| Mean            |              | 0.544                                            | 0.735                                                        |   <ins>0.803</ins>   | *0.802* | 0.733 | 0.563 | **0.806** |
-| Std             |              | 0.180                                            | **0.090**                                            | <ins>0.094</ins> |       *0.096*        | *0.096* |                            0.165                             |      0.100       |
-| **Macro F1**    |              |                                                  |                                                              |                  |                    |                            |                            |                            |
-| FPB [1]         | -            | 0.487                                            | 0.745                                                        |      **0.841**       |       *0.837*        |      0.752       |                            0.517                             | <ins>0.840</ins> |
-| FiQA-SA [2]     | -            | 0.560                                            | 0.641                                                        |   <ins>0.746</ins>   |       *0.743*        |      0.641       |                            0.610                             |    **0.752**     |
-| TFNS [3]        | -            | 0.340                                            | 0.681                                                        |       *0.841*        |   <ins>0.845</ins>   |      0.774       |                            0.401                             |    **0.866**     |
-| NWGI [4]        | -            | 0.489                                            | 0.579                                                        |      **0.650**       |   <ins>0.645</ins>   |      0.592       |                            0.539                             |     *0.644*      |
-| Mean            |              | 0.469                                            | 0.675                                                        |   <ins>0.769</ins>   |       *0.767*        |      0.690       |                            0.517                             |    **0.776**     |
-| Std             |              | 0.080                                            | **0.069**                                             | 0.079 |        0.081         |     *0.076*      |                       <ins>0.075</ins>                       |      0.087       |
+| **Weighted F1** | BloombergGPT | ChatGPT | GPT-4 | [ChatGLM2](https://github.com/THUDM/ChatGLM2-6B) | [v3](https://huggingface.co/oliverwang15/FinGPT_ChatGLM2_Sentiment_Instruction_LoRA_FT) | [v3.1](https://huggingface.co/oliverwang15/FinGPT_v31_ChatGLM2_Sentiment_Instruction_LoRA_FT)      | v3.1.1 (8bit) | v3.1.2 (QLoRA) | [Llama2](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) | [v3.2](https://huggingface.co/oliverwang15/FinGPT_v32_Llama2_Sentiment_Instruction_LoRA_FT) |
+| --------------- | :----------: | :----------------------------------------------: | :----------------------------------------------------------: | :--------------: | :----------------: | :------------------------: | :------------------------: | :------------------------: | :------------------------: | :------------------------: |
+| FPB [1] | 0.511 | 0.781 | 0.833 | 0.381 | 0.701 | <ins>**0.855**</ins> | <ins>**0.855**</ins> | 0.777 | 0.390 | *0.850* |
+| FiQA-SA [2] | 0.751 | 0.730 | 0.630 | 0.790 | 0.760 | <ins>0.850</ins> | *0.847* | 0.752 | 0.800 | **0.860** |
+| TFNS [3] | - | 0.736 | 0.808 | 0.189 | 0.740 | *0.875* | <ins>0.879</ins> | 0.828 | 0.296 | **0.894** |
+| NWGI [4] | - | - | - | 0.449 | 0.578 | **0.642** | <ins>0.636</ins> | 0.583 | 0.503 | *0.632* |
+| Mean |  |  |  | 0.452 | 0.730 | <ins>0.805</ins> | *0.804* | 0.735 | 0.497 | **0.809** |
+| Std |  |  |  | 0.217 | **0.091** | *0.095* | 0.098 | <ins>0.092</ins> | 0.189 | 0.103 |
+| **ACC/F1 Micro** |  |  |  |  |  |  |  |  |  |  |
+| FPB [1]         | -            |  0.781  | 0.834 | 0.464                                            | 0.775                                                        | <ins>**0.856**</ins> | <ins>**0.856**</ins> |      0.797       |                            0.462                             |     *0.851*      |
+| FiQA-SA [2]     | -            |  0.662  | 0.545 | 0.822                                            | 0.731                                                        | <ins>*0.836*</ins> |  <ins>*0.836*</ins>  |      0.713       |                            0.822                             |    **0.844**     |
+| TFNS [3]        | -            |  0.731  | 0.813 | 0.331                                            | 0.738                                                        | *0.876* | <ins>0.879</ins> |      0.837       |                            0.386                             |    **0.894**     |
+| NWGI [4]        | -            | -           | -           | 0.560                                            | 0.588                                                        |      **0.642**       | <ins>0.638</ins> | 0.587 | 0.583 | *0.636* |
+| Mean            |              |              |              | 0.544                                            | 0.735                                                        |   <ins>0.803</ins>   | *0.802* | 0.733 | 0.563 | **0.806** |
+| Std             |              |              |              | 0.180                                            | **0.090**                                            | <ins>0.094</ins> |       *0.096*        | *0.096* |                            0.165                             |      0.100       |
+| **Macro F1**    |              |              |              |                                                  |                                                              |                  |                    |                            |                            |                            |
+| FPB [1]         | -            | 0.770      | 0.827 | 0.487                                            | 0.745                                                        |      **0.841**       |       *0.837*        |      0.752       |                            0.517                             | <ins>0.840</ins> |
+| FiQA-SA [2]     | -            | 0.611       | 0.539 | 0.560                                            | 0.641                                                        |   <ins>0.746</ins>   |       *0.743*        |      0.641       |                            0.610                             |    **0.752**     |
+| TFNS [3]        | -            |  0.693  | 0.758 | 0.340                                            | 0.681                                                        |       *0.841*        |   <ins>0.845</ins>   |      0.774       |                            0.401                             |    **0.866**     |
+| NWGI [4]        | -            | -           | -           | 0.489                                            | 0.579                                                        |      **0.650**       |   <ins>0.645</ins>   |      0.592       |                            0.539                             |     *0.644*      |
+| Mean            |              |              |              | 0.469                                            | 0.675                                                        |   <ins>0.769</ins>   |       *0.767*        |      0.690       |                            0.517                             |    **0.776**     |
+| Std             |              |              |              | 0.080                                            | **0.069**                                             | 0.079 |        0.081         |     *0.076*      |                       <ins>0.075</ins>                       |      0.087       |
 
 ​	**X**: Best score, <ins>X</ins>: Second best score, *X*: Third best score
 
@@ -82,7 +84,30 @@ for sentiment in out_text:
 
 [[4] News With GPT Instruction (NWGI)](https://huggingface.co/datasets/oliverwang15/news_with_gpt_instructions) is a dataset whose labels were generated by ChatGPT. The train set has 16.2k samples and the test set has 4.05k samples. The dataset not only contains 7 classification labels: "strong negative", "moderately negative", "mildly negative", "neutral", "mildly positive", "moderately positive", "strong positive". but it also has the reasons for that result, which might be helpful in the instruction finetuning.
 
-## Ⅲ. Train & Test set
+## Ⅲ.  How to Train
+
+* **Notice: The following code is for ChatGLM2 only. if you need to train other models like Llama2, please remember to change the model name in the code:**
+
+  ``` 
+  # model_name = "THUDM/chatglm2-6b"
+  model_name = "daryl149/llama-2-7b-chat-hf"
+  ```
+
+* Prepare for the training data: Run this [notebook](./data/making_data.ipynb)
+
+* Rich Computing Resources (like 8 * A100):
+
+  ``` shell
+  cd training_parallel
+  sh train.sh
+  ```
+
+* Limited Computing Resources:
+
+  * Run this [notebook](./training_8bit/train.ipynb) in 8bit
+  * Run this [notebook](./training_int4/train.ipynb) in int4 (QLoRA)
+
+## Ⅳ. Train & Test set
 
 * The training set and testing set are all the split from the four datasets, so this task is actually full-shots instead of few-shots or zero-shots.
 
@@ -94,7 +119,7 @@ for sentiment in out_text:
 | NWGI [4]    | 16184                    | 1           | 16184                  | 21.0  | 4047         |
 | Total       | -                        | -           | 76772                  | 100   | -            |
 
-## Ⅳ. Models settings
+## Ⅴ. Models settings
 
 * LoRA setting for all models:
 
@@ -241,6 +266,3 @@ for sentiment in out_text:
   )
   ```
 
-## Ⅴ. How to Train
-
-Coming Soon.

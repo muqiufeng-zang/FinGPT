@@ -1,9 +1,14 @@
 # Data-Centric FinGPT: Open-source for Open Finance.
-[![Downloads](https://pepy.tech/badge/fingpt)](https://pepy.tech/project/fingpt)
-[![Downloads](https://pepy.tech/badge/fingpt/week)](https://pepy.tech/project/fingpt)
+[![Downloads](https://static.pepy.tech/badge/fingpt)](https://pepy.tech/project/fingpt)
+[![Downloads](https://static.pepy.tech/badge/fingpt/week)](https://pepy.tech/project/fingpt)
 [![Python 3.8](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![PyPI](https://img.shields.io/pypi/v/fingpt.svg)](https://pypi.org/project/fingpt/)
 ![License](https://img.shields.io/github/license/AI4Finance-Foundation/fingpt.svg?color=brightgreen)
+
+
+<div align="center">
+<img align="center" src=figs/logo_transparent_background.png width="40%"/>
+</div>
 
 Let us DO NOT expect Wall Street to open-source LLMs nor open APIs, due to FinTech institutes' internal regulations and policies.
 
@@ -12,6 +17,11 @@ We democratize Internet-scale data for financial large language models (FinLLMs)
 [Blueprint of FinGPT](https://arxiv.org/abs/2306.06031)
 
 **Disclaimer: We are sharing codes for academic purposes under the MIT education license. Nothing herein is financial advice, and NOT a recommendation to trade real money. Please use common sense and always first consult a professional before trading or investing.**
+
+
+[![](https://dcbadge.vercel.app/api/server/trsr8SXpW5)](https://discord.gg/trsr8SXpW5)
+
+
 
 ## Why FinGPT?
 
@@ -22,16 +32,25 @@ We democratize Internet-scale data for financial large language models (FinLLMs)
 3). The key technology is "RLHF (Reinforcement learning from human feedback)", which is missing in BloombergGPT. RLHF enables an LLM model to learn individual preferences (risk-aversion level, investing habits, personalized robo-advisor, etc.), which is the "secret" ingredient of ChatGPT and GPT4.
 
 ## FinGPT Demos
-* [FinGPT V3 (Updated on 7/11/2023)](./fingpt)
-  + **FinGPT v3 [(FinGPT_ChatGLM2_Sentiment_Instruction_LoRA_FT)](https://huggingface.co/oliverwang15/FinGPT_ChatGLM2_Sentiment_Instruction_LoRA_FT) is a LLM finetuned with LoRA method on the News and Tweets sentiment analysis dataset which achieve best scores on most of the financial sentiment analysis datasets.**
-  + Benchmark Results: 
-    | Weighted F1   | BloombergGPT | ChatGLM2 | ChatGLM2 (8-bit) | FinGPT v3 | FinGPT v3 (8-bit) |
-    | ---------------------- | ------------ | -------- | ---------------- | --------- | ----------------- |
-    | FPB  | 0.511        | 0.381    | 0.398            | **0.795** | 0.778             |
-    | FiQA-SA   | 0.751        | 0.79     | 0.801            | **0.806** | 0.801             |
-    | TFNS   | -            | 0.189    | 0.19             | **0.74**  | 0.721             |
-    | NWGI   | - | 0.449    | 0.452            | **0.578** | **0.578**         |
+* [FinGPT V3 (Updated on 8/4/2023)](./fingpt)
+  
+  + **FinGPT v3 series are LLMs finetuned with LoRA method on the News and Tweets sentiment analysis dataset which achieve best scores on most of the financial sentiment analysis datasets.**
+  + FinGPT v3.1 uses chatglm2-6B as base model; FinGPT v3.2 uses llama2-7b as base model
+  + Benchmark Results:
+    | Weighted F1   | [BloombergGPT](https://arxiv.org/abs/2303.17564) | [ChatGLM2](https://github.com/THUDM/ChatGLM2-6B) |  [Llama2](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) |[FinGPT v3.1](https://huggingface.co/oliverwang15/FinGPT_v31_ChatGLM2_Sentiment_Instruction_LoRA_FT) |v3.1.1 (8bit)|v3.1.2 (QLoRA)| [FinGPT v3.2](https://huggingface.co/oliverwang15/FinGPT_v32_Llama2_Sentiment_Instruction_LoRA_FT) |
+    | ---------------------- | ------------ | -------- | ---------------- | --------- | ----------------- | ----------------- |----------------- |
+    | FPB       | 0.511        | 0.381      | 0.390      | **0.855**      | 0.855           |  0.777          | 0.850          |
+    | FiQA-SA   | 0.751        | 0.790      | 0.800      | 0.850          | 0.847            | 0.752      |**0.860**      |
+    | TFNS      | -            | 0.189      | 0.296      | 0.875          | 0.879           | 0.828       |**0.894**        |
+    | NWGI      | -            | 0.449      | 0.503      | **0.642**      | 0.632            |0.583            |0.636            |
+    | Devices   | 512 × A100   | 64 × A100  |  2048 × A100     | 8 × A100     | A100    | A100        |8 × A100        |
+    | Time      | 53 days      | 2.5 days   |  21 days     |  2 hours      | 6.47 hours    |   4.15 hours        | 2 hours        |   
+    | Cost      | $2.67 million      | $ 14,976   |  $4.23 million    |  $65.6     | $25.88     |  $17.01     |  $65.6     | 
+**Cost per GPU hour.** For A100 GPUs, the AWS p4d.24xlarge instance, equipped with 8 A100 GPUs is used as a benchmark to estimate the costs. Note that BloombergGPT also used p4d.24xlarge As of July 11, 2023, the hourly rate for this instance stands at $32.773. Consequently, the estimated cost per GPU hour comes to $32.77 divided by 8, resulting in approximately **$4.10**. With this value as the reference unit price (1 GPU hour). **BloombergGPT estimated cost= 512 x 53 x 24 = 651,264 GPU hours x $4.10 = $2,670,182.40**
 
+  * Reproduce the results by running [benchmarks](./fingpt/FinGPT-v3/benchmark/benchmarks.ipynb), and the detailed tutorial is on the way.
+  * Finetune your own FinGPT v3 model with the LoRA method on only an RTX 3090 with this [notebook](./fingpt/FinGPT-v3/training_8bit/train.ipynb) in 8bit or this [notebook](./fingpt/FinGPT-v3/training_int4/train.ipynb) in int4 (QLoRA)
+  
 * [FinGPT V2](./fingpt)
   + **Let's train our own FinGPT in American Financial Market with LLaMA and LoRA  (Low-Rank Adaptation)**
 * [FinGPT V1](./fingpt)
@@ -123,7 +142,7 @@ We democratize Internet-scale data for financial large language models (FinLLMs)
 + [YouTube video] [ChatGPT: Your Crypto Assistant](https://www.youtube.com/watch?v=LpzeshX6s2w)
 + [YouTube video] [Generate Insane Trading Returns with ChatGPT and TradingView](https://www.youtube.com/watch?v=ekz6ugJE1h0&t=3s)
 
-
+<!--- 
 **(Fast and accurate) Sentiment Analysis**
 
    GPT-3 can help study customer surveys, social media tweets from customers/users.
@@ -184,6 +203,7 @@ Interesting evaluations:
 on Reasoning, Hallucination, and Interactivity](https://arxiv.org/pdf/2302.04023.pdf)
 
 [YouTube video] [Physics Solution: ChatGPT vs. Google](https://www.youtube.com/watch?v=x4dIx9VYQoM)
+---> 
 
 ## Links
 
