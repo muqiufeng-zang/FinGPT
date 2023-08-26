@@ -1,6 +1,6 @@
 import sys
 sys.path.append("/usr/local/Cellar/ta-lib/0.4.0")
-sys.path.append("../../../../FinRL-Meta-0.3.6")
+sys.path.append("../../../../FinRL-Meta")
 # sys.path.append("/usr/local/Cellar/ta-lib/0.4.0/bin")
 # sys.path.append("/usr/local/Cellar/ta-lib/0.4.0")
 # sys.path.append("/usr/local/Cellar/ta-lib/")
