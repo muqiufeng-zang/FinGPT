@@ -1,12 +1,20 @@
 import sys
-sys.path.append("../../FinRL-Meta/")
-sys.path.append("D:/python_project/FinRL-Meta/FinRL-Meta")
+sys.path.append("/usr/local/Cellar/ta-lib/0.4.0")
+sys.path.append("../../../../FinRL-Meta-0.3.6")
+# sys.path.append("/usr/local/Cellar/ta-lib/0.4.0/bin")
+# sys.path.append("/usr/local/Cellar/ta-lib/0.4.0")
+# sys.path.append("/usr/local/Cellar/ta-lib/")
+# sys.path.append("D:/python_project/FinRL-Meta/FinRL-Meta")
+
+# print(sys.path)
+
+import talib
 
 import os
 import datetime
 import pandas as pd
-from lxml import etree
-from tqdm import tqdm
+# from lxml import etree
+# from tqdm import tqdm
 
 from meta.data_processors.akshare import Akshare
 
@@ -24,10 +32,10 @@ You may install FinRL-Meta package with the following code:
 from loguru import logger
 
 # The result_path should be the results with only titles which is the IN path
-result_path = "D:/python_project/FinRL-Meta/experiment/scrape/results_with_content/"
+result_path = "../../../data/contents/"
 
 # The base_path should be the results with labels which is the OUT path
-base_path = "D:/python_project/FinRL-Meta/experiment/scrape/content_with_labels/"
+base_path = "../../../data/content_with_labels/"
 file_list = os.listdir(result_path)
 
 def add_label(x, df_price, foward_days = 5, threshold = 0.02, threshold_very = 0.06):

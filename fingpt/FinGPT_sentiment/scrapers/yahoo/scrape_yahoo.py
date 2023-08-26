@@ -62,7 +62,7 @@ def scrape_yahoo_finance_article_page(url, subject):
         soup = BeautifulSoup(response.content, 'html.parser')
         # print("Response status code:", response.status_code)
         # print("Response headers:", response.headers)
-        # print("Response content:", response.content)
+        # print("Response contents:", response.contents)
 
         headline_article = soup.find('article')
         # print("Headline div:", headline_article)

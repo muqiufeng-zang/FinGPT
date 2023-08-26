@@ -28,7 +28,7 @@ def similarity_score(a, b):
 def scrape_market_screen_article_page(url, subject):
     try:
         response = requests_get(url)
-        # print("response", response.content)
+        # print("response", response.contents)
         soup = BeautifulSoup(response.content, 'lxml-xml')
 
         headline_text = soup.select('h1.title.title__primary.mb-15.txt-bold')[0].text.strip()

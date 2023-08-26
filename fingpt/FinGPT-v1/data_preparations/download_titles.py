@@ -1,5 +1,5 @@
 import sys
-sys.path.append("../../FinNLP")
+sys.path.append("../../../../FinNLP")
 
 import os
 import multiprocessing as mp
@@ -11,7 +11,7 @@ stock_list = df.SECURITY_CODE.unique()
 stock_list = [str(s).zfill(6) for s in stock_list]
 
 # ATTENTION! Should replace this with your results path!
-al_re = os.listdir(r"D:\python_project\FinRL-Meta\experiment\scrape\results")
+al_re = os.listdir(r"../../../data/titles")
 al_re = [al.split(".")[0] for al in al_re]
 
 def get_news_data( stock ):
@@ -23,14 +23,14 @@ def get_news_data( stock ):
     config = {
         "use_proxy": "kuaidaili",
         "max_retry": 5,
-        # "proxy_pages": 5,
-        "tunnel": YOUR_KUAIDAILI_TUNNEL,
-        "username": YOUR_KUAIDAILI_USERNAME,
-        "password": YOUR_KUAIDAILI_PASSWARD,
+        "proxy_pages": 5,
+        "tunnel": "f290.kdltps.com:15818",
+        "username": "t19133033828858",
+        "password": "xskxp1g1",
     }
     
     # ATTENTION! Should replace this with your results path!
-    result_path = r"D:\python_project\FinRL-Meta\experiment\scrape\results"
+    result_path = r"../../../data/titles"
     result_path = os.path.join(result_path, f"{stock}.csv")
     downloader = Eastmoney_Streaming(config)
     downloader.download_streaming_stock(stock, rounds = 0)

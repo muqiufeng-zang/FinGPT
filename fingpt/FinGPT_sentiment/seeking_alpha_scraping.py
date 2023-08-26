@@ -24,7 +24,7 @@ def process_article(number):
         headers = {"User-Agent": user_agent}
         response = requests.get(url, headers=headers)
         success = response.status_code == 200
-        content = response.json().get("data", {}).get("attributes", {}).get("content", None)
+        content = response.json().get("data", {}).get("attributes", {}).get("contents", None)
     except Exception as e:
         success = False
         content = None
@@ -32,14 +32,14 @@ def process_article(number):
     return {
         "number": number,
         "success": success,
-        "content": content
+        "contents": content
     }
 
 
 with ThreadPoolExecutor() as executor, \
         open(csv_file_path, "a", newline="") as csv_file, \
         open(json_file_path, "a") as json_file:
-    csv_writer = csv.DictWriter(csv_file, fieldnames=["number", "success", "content"])
+    csv_writer = csv.DictWriter(csv_file, fieldnames=["number", "success", "contents"])
     json_results = []
 
     futures = [executor.submit(process_article, number) for number in range(3000000, 4508859)]

@@ -37,7 +37,7 @@ def scrape_cnbc_article_page(url, subject):
     try:
         response = requests_get(url)
         soup = BeautifulSoup(response.content, 'lxml-xml')
-        print("Response content, ", response.content)
+        print("Response contents, ", response.content)
         headline_h1 = soup.find('h1', {'class': 'ArticleHeader-headline'})
         keypoints_div = soup.find('div', {'class': 'RenderKeyPoints-list'})
         if keypoints_div:

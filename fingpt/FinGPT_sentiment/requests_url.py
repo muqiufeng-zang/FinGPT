@@ -71,10 +71,10 @@ def requests_get_for_seeking_alpha(url, subject):
         "sort": "rank1 desc",
         "size": "10",
         "start": "0",
-        "q.options": "{\"fields\":[\"author\",\"author_url\",\"content^1\",\"content_type\",\"image_url\",\"primary_symbols\",\"secondary_symbols\",\"summary\",\"tags\",\"title^3\",\"uri\"]}",
+        "q.options": "{\"fields\":[\"author\",\"author_url\",\"contents^1\",\"content_type\",\"image_url\",\"primary_symbols\",\"secondary_symbols\",\"summary\",\"tags\",\"title^3\",\"uri\"]}",
         "highlight.title": "{pre_tag:'<strong>',post_tag:'<<<<strong>'},",
         "highlight.summary": "{pre_tag:'<strong>',post_tag:'<<<<strong>'},",
-        "highlight.content": "{pre_tag:'<strong>',post_tag:'<<<<strong>'},",
+        "highlight.contents": "{pre_tag:'<strong>',post_tag:'<<<<strong>'},",
         "highlight.author": "{pre_tag:'<strong>',post_tag:'<<<<strong>'},",
         "highlight.primary_symbols": "{pre_tag:'<strong>',post_tag:'<<<<strong>'}"
     }

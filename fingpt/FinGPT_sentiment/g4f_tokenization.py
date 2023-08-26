@@ -41,7 +41,7 @@ responses = []
 for i in range(number_of_messages):
     print(f"Asking {provider} this: {messages[i]}")
     response = g4f.ChatCompletion.create(model='gpt-3.5-turbo', messages=[
-        {"role": "user", "content": messages[i]}
+        {"role": "user", "contents": messages[i]}
     ], provider=provider)
     responses.append(response)
     print(f"{provider} answers with this: {responses[i]}")
@@ -49,14 +49,14 @@ for i in range(number_of_messages):
 
 # normal response
 # response = g4f.ChatCompletion.create(model=g4f.Model.gpt_4, messages=[
-#                                      {"role": "user", "content": "hi"}]) # alterative model setting
+#                                      {"role": "user", "contents": "hi"}]) # alterative model setting
 #
 # print(response)
 #
 #
 # # Set with provider
 # response = g4f.ChatCompletion.create(model='gpt-3.5-turbo', provider=g4f.Provider.DeepAi, messages=[
-#                                      {"role": "user", "content": "Hello world"}], stream=True)
+#                                      {"role": "user", "contents": "Hello world"}], stream=True)
 #
 # for message in response:
 #     print(message)

@@ -390,8 +390,8 @@ def scrape_seeking_alpha(subject):
         response = requests_get(full_url)
 
         # JSONN parsing method
-        # json_response = html_to_json.convert(response.content)
-        # print("Response: ", response.content)
+        # json_response = html_to_json.convert(response.contents)
+        # print("Response: ", response.contents)
         # print("JSON: ", json_response)
         # response_json = json.loads(json_response)
         # Find all the <a> tags within the specified hierarchy
@@ -436,7 +436,7 @@ def scrape_seeking_alpha_article_page(url, subject):
         if "symbol" in url:
             print("Symbol page of Seeking Alpha")
             print("Response status code: ", response.status_code)
-            print("Response content: ", response.content)
+            print("Response contents: ", response.content)
             a_titles = soup.find('a', {'class': 'sa-v'})
             for a_title in a_titles:
                 title = a_title.text.strip()
@@ -551,9 +551,9 @@ def scrape_google(subject):
 #
 #     try:
 #         driver.get(url)
-#         time.sleep(5)  # Wait for the JavaScript content to load (adjust the waiting time as needed)
-#         content = driver.page_source
-#         return content
+#         time.sleep(5)  # Wait for the JavaScript contents to load (adjust the waiting time as needed)
+#         contents = driver.page_source
+#         return contents
 #     except Exception as e:
 #         print("Error: " + str(e))
 #         return "N/A", subject
@@ -594,7 +594,7 @@ def get_tweet_id(url):
 def scrape_twitter_through_website(url, subject): # not feasible
     try:
         response = requests_get(url)
-        # print("Twitter GET response: ", response.content)
+        # print("Twitter GET response: ", response.contents)
         soup = BeautifulSoup(response.content, 'lxml-xml')
         # print(soup.text)
 
@@ -659,7 +659,7 @@ def webdrive_twitter(url):
 
     try:
         driver.get(url)
-        time.sleep(5)  # Wait for the JavaScript content to load (adjust the waiting time as needed)
+        time.sleep(5)  # Wait for the JavaScript contents to load (adjust the waiting time as needed)
         content = driver.page_source
         return content
     except Exception as e:
