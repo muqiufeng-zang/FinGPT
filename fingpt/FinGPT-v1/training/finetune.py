@@ -10,14 +10,19 @@ from dataclasses import dataclass, field
 import datasets
 import os
 
-model_name = "/root/.cache/huggingface/hub/models--THUDM--chatglm-6b/snapshots/658202d88ac4bb782b99e99ac3adff58b4d0b813"
+# model_name = "/root/.cache/huggingface/hub/models--THUDM--chatglm-6b/snapshots/658202d88ac4bb782b99e99ac3adff58b4d0b813"
 # model_name = "THUDM/chatglm-6b"
-tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+# model_name = "Users/zcp/Code/chatglm-6b-int4"
+# model_name = "THUDM/chatglm-6b-int8"
+model_name = "../../../../chatglm-6b"
+# model_name = "Users/zcp/Code/chatglm-6b-int4"
+# model_name = "../../../../chatglm-6b-int4"
+tokenizer = AutoTokenizer.from_pretrained(model_name,trust_remote_code=True)
 
 
 @dataclass
 class FinetuneArguments:
-    dataset_path: str = field(default="/root/FinGPT-ChatGLM-Fineturning/data/title/dataset_title_train_and_valid")
+    dataset_path: str = field(default="../../../data/dataset/dataset_title_train_and_valid")
     model_path: str = field(default="output")
     lora_rank: int = field(default=8)
 
@@ -87,9 +92,16 @@ def main():
     ).parse_args_into_dataclasses()
 
     # init model
+
+    # model = AutoModel.from_pretrained(
+    #     model_name, load_in_8bit=True, trust_remote_code=True, device_map="auto"
+    # )
     model = AutoModel.from_pretrained(
-        model_name, load_in_8bit=True, trust_remote_code=True, device_map="auto"
+        model_name, trust_remote_code=True
     )
+    # model = AutoModel.from_pretrained(
+    #     model_name, trust_remote_code=True
+    # ).float()
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
     model.is_parallelizable = True

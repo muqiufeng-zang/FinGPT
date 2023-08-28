@@ -1,5 +1,5 @@
-python -u finetune.py \
-    --dataset_path "/root/FinGPT-ChatGLM-Fineturning/data/title/dataset_title_train_and_valid" \
+python3.11 -u finetune.py \
+    --dataset_path "../../../data/dataset/dataset_title_train_and_valid" \
     --lora_rank 8 \
     --per_device_train_batch_size 16 \
     --per_device_eval_batch_size 16 \
@@ -8,10 +8,10 @@ python -u finetune.py \
     --save_steps 100 \
     --save_total_limit 5 \
     --learning_rate 1e-6 \
-    --fp16 \
+    --use_cpu true \
     --remove_unused_columns false \
     --logging_steps 10 \
     --eval_steps 100 \
     --load_best_model_at_end true \
     --evaluation_strategy "steps" \
-    --output_dir "/root/output"  > train.log 2>&1
+    --output_dir "../../../output"  > train.log 2>&1

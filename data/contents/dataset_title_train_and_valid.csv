@@ -1,0 +1,17 @@
+instruction,input,output
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-07。
+新闻标题为：""万科Ａ：融资净偿还3241.85万元，融资余额44.34亿元（08-04）""。",negative
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-07。
+新闻标题为：""万科A本周融资净偿还4339.37万元，居房地产开发板块第三""。",negative
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-06。
+新闻标题为：""万科A本周深股通持股市值减少1.41亿元，居房地产开发板块第一""。",negative
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-05。
+新闻标题为：""万科A08月04日被深股通减持1331.26万股""。",negative
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-04。
+新闻标题为：""万科Ａ：连续3日融资净买入累计4951.63万元（08-03）""。",negative
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-04。
+新闻标题为：""万科A08月03日获深股通增持597.74万股""。",negative
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-04。
+新闻标题为：""万科前7个月销售约2260亿元 近期新增7个开发项目""。",negative
+What is the sentiment of this news? Answer:{very negative/negative/neutral/positive/very positive},"今天的日期为：2023-08-04。
+新闻标题为：""万科A披露7月销售数据 实现合同销售金额220.5亿元""。",negative
