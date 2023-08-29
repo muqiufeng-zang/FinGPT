@@ -8,7 +8,7 @@ python3.11 -u finetune.py \
     --save_steps 100 \
     --save_total_limit 5 \
     --learning_rate 1e-6 \
-    --use_cpu true \
+    --fp16 \
     --remove_unused_columns false \
     --logging_steps 10 \
     --eval_steps 100 \

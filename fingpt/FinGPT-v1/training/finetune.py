@@ -98,7 +98,7 @@ def main():
     # )
     model = AutoModel.from_pretrained(
         model_name, trust_remote_code=True
-    )
+    ).half().cuda()
     # model = AutoModel.from_pretrained(
     #     model_name, trust_remote_code=True
     # ).float()
