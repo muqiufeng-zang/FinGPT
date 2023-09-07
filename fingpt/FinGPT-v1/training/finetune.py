@@ -100,6 +100,9 @@ def main():
     # model = AutoModel.from_pretrained(
     #     model_name, trust_remote_code=True
     # ).float()
+    print("00000")
+
+    print(model)
     model = nn.DataParallel(model, device_ids=[0,1]).cuda()
     print("11111")
 
