@@ -4,7 +4,7 @@ from tqdm import tqdm
 import datasets
 import transformers
 
-MODEL_NAME = "THUDM/chatglm-6b"
+MODEL_NAME = "../../../../chatglm-6b-int4"
 
 def preprocess(tokenizer, config, example, max_seq_length):
     prompt = example["context"]
