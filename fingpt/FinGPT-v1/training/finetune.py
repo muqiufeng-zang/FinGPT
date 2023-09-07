@@ -98,11 +98,11 @@ def main():
     # )
     model = AutoModel.from_pretrained(
         model_name, trust_remote_code=True
-    ).half()
+    )
     # model = AutoModel.from_pretrained(
     #     model_name, trust_remote_code=True
     # ).float()
-    model = DataParallel(model, device_ids=[0, 1]).cuda()
+    model = DataParallel(model, device_ids=[0,1]).cuda()
 
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
