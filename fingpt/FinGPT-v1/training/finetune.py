@@ -101,6 +101,9 @@ def main():
     #     model_name, trust_remote_code=True
     # ).float()
     model = nn.DataParallel(model, device_ids=[0,1]).cuda()
+    print("11111")
+
+    print(model)
 
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
@@ -110,6 +113,8 @@ def main():
     model.config.use_cache = (
         False  # silence the warnings. Please re-enable for inference!
     )
+    print("222222")
+    print(model)
 
     # setup peft
     peft_config = LoraConfig(
