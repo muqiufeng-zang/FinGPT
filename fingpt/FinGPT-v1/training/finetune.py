@@ -89,6 +89,7 @@ def main():
         (FinetuneArguments, TrainingArguments)
     ).parse_args_into_dataclasses()
 
+    os.environ['CUDA_VISIBLE_DEVICES'] = '0,1,2,3'
     print("Total GPU Count :{}".format(torch.cuda.device_count()))
     print("Total CPU Count :{}".format(torch.cuda.os.cpu_count()))
 
