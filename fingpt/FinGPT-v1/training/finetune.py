@@ -5,6 +5,7 @@ from transformers import Trainer, HfArgumentParser
 from transformers import AutoTokenizer, AutoModel
 import torch
 import torch.nn as nn
+from torch.nn.parallel import DataParallel
 from peft import get_peft_model, LoraConfig, TaskType
 from dataclasses import dataclass, field
 import datasets
@@ -91,15 +92,18 @@ def main():
 
     # init model
 
+
     # model = AutoModel.from_pretrained(
     #     model_name, load_in_8bit=True, trust_remote_code=True, device_map="auto"
     # )
     model = AutoModel.from_pretrained(
         model_name, trust_remote_code=True
-    ).half().cuda()
+    ).half()
     # model = AutoModel.from_pretrained(
     #     model_name, trust_remote_code=True
     # ).float()
+    model = DataParallel(model, device_ids=[0, 1]).cuda()
+
     model.gradient_checkpointing_enable()
     model.enable_input_require_grads()
     model.is_parallelizable = True
