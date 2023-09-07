@@ -89,6 +89,9 @@ def main():
         (FinetuneArguments, TrainingArguments)
     ).parse_args_into_dataclasses()
 
+    print("Total GPU Count :{}".format(torch.cuda.device_count()))
+    print("Total CPU Count :{}".format(torch.cuda.os.cpu_count()))
+
     # init model
 
     # model = AutoModel.from_pretrained(
