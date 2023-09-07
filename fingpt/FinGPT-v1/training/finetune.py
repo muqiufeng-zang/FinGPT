@@ -14,8 +14,8 @@ import os
 # model_name = "/root/.cache/huggingface/hub/models--THUDM--chatglm-6b/snapshots/658202d88ac4bb782b99e99ac3adff58b4d0b813"
 # model_name = "THUDM/chatglm-6b"
 # model_name = "THUDM/chatglm-6b-int8"
-# model_name = "../../../../chatglm-6b"
-model_name = "../../../../chatglm-6b-int4"
+model_name = "../../../../chatglm-6b"
+# model_name = "../../../../chatglm-6b-int4"
 tokenizer = AutoTokenizer.from_pretrained(model_name,trust_remote_code=True)
 
 
