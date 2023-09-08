@@ -107,7 +107,7 @@ def main():
     print("00000")
 
     print(model)
-    model = nn.DataParallel(model, device_ids=[0,1]).cuda()
+    model = nn.DataParallel(model, device_ids=[0,1], output_device=0).cuda()
     print("11111")
 
     print(model)
