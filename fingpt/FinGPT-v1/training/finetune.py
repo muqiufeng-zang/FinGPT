@@ -119,7 +119,7 @@ def main():
     model.module.enable_input_require_grads()
     model.module.is_parallelizable = True
     model.module.model_parallel = True
-    model.module.lm_head = CastOutputToFloat(model.lm_head)
+    model.module.lm_head = CastOutputToFloat(model.module.lm_head)
     model.module.config.use_cache = (
         False  # silence the warnings. Please re-enable for inference!
     )
