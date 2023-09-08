@@ -1,4 +1,4 @@
-/usr/local/python/3.11.5/bin/python3.11 -u  -m torch.distributed.launch --nproc_per_node=2 finetune.py \
+/usr/local/python/3.11.5/bin/python3.11 -u  -m torchrun --nproc_per_node=2 finetune.py \
     --dataset_path "../../../data/dataset/dataset_title_train_and_valid" \
     --lora_rank 8 \
     --per_device_train_batch_size 16 \
