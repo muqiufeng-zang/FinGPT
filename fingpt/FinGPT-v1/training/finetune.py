@@ -128,6 +128,8 @@ def main():
     print("3333333")
     print(model.module)
 
+    # model = model.module.to(torch.float16)  # 将模型设置为半精度
+
     # setup peft
     peft_config = LoraConfig(
         task_type=TaskType.CAUSAL_LM,
@@ -149,7 +151,7 @@ def main():
 
     # start train
     trainer = ModifiedTrainer(
-        model=model,
+        model=model.module,
         train_dataset = train_data,
         eval_dataset = val_data,
         args=training_args,
