@@ -105,6 +105,8 @@ def main():
     # model = AutoModel.from_pretrained(
     #     model_name, trust_remote_code=True
     # ).float()
+
+    model.quantize(4)
     print("00000")
 
     print(model)
