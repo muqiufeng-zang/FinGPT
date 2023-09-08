@@ -139,7 +139,7 @@ def main():
         lora_dropout=0.1,
         target_modules=["query_key_value"],
     )
-    model = get_peft_model(model.module, peft_config)
+    model = get_peft_model(model, peft_config)
 
     # load dataset
     dataset = datasets.load_from_disk(finetune_args.dataset_path)
