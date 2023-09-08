@@ -115,16 +115,18 @@ def main():
 
     print(model)
 
-    model.gradient_checkpointing_enable()
-    model.enable_input_require_grads()
-    model.is_parallelizable = True
-    model.model_parallel = True
-    model.lm_head = CastOutputToFloat(model.lm_head)
-    model.config.use_cache = (
+    model.model.gradient_checkpointing_enable()
+    model.model.enable_input_require_grads()
+    model.model.is_parallelizable = True
+    model.model.model_parallel = True
+    model.model.lm_head = CastOutputToFloat(model.lm_head)
+    model.model.config.use_cache = (
         False  # silence the warnings. Please re-enable for inference!
     )
     print("222222")
     print(model)
+    print("3333333")
+    print(model.model)
 
     # setup peft
     peft_config = LoraConfig(
@@ -135,7 +137,7 @@ def main():
         lora_dropout=0.1,
         target_modules=["query_key_value"],
     )
-    model = get_peft_model(model, peft_config)
+    model = get_peft_model(model.model, peft_config)
 
     # load dataset
     dataset = datasets.load_from_disk(finetune_args.dataset_path)
