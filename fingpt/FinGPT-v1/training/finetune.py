@@ -85,6 +85,7 @@ def main():
     TrainingArguments.torch_compile = True
     TrainingArguments.load_best_model_at_end = True
     TrainingArguments.eval_steps = 50
+    TrainingArguments._n_gpu = 2
     finetune_args, training_args = HfArgumentParser(
         (FinetuneArguments, TrainingArguments)
     ).parse_args_into_dataclasses()
