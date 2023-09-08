@@ -128,7 +128,7 @@ def main():
     print("3333333")
     print(model.module)
 
-    model = model.module.to(torch.float16)  # 将模型设置为半精度
+    model = model.module.to(torch.float32)  # 将模型设置为半精度
 
     # setup peft
     peft_config = LoraConfig(
